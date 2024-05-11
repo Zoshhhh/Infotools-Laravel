@@ -31,26 +31,26 @@ Explore the capabilities of this Laravel CRM app by setting it up on your local 
    ```
    
 3.Install dependencies:
-    ```bash
+   ```bash
     composer install
-    ```
+   ```
     
 4.Set up your .env file by copying .env.example and adjusting database settings.
 
 5.Run migrations to set up your database:
-    ```bash
+   ```bash
     php artisan migrate
-    ```
+   ```
     
 6.Seed the database with initial data:
-    ```bash
+   ```bash
     php artisan db:seed --class=UsersTableSeeder
-    ```
+   ```
     
 7.Serve the application:
-    ```bash
+   ```bash
     php artisan serve
-    ```
+   ```
 
 ### Login Credentials 🔑
 You can now log in using the following credentials:
