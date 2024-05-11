@@ -52,11 +52,11 @@ Explore the capabilities of this Laravel CRM app by setting it up on your local 
    php artisan serve
    ```
 
-### Login Credentials 🔑
+## Login Credentials 🔑
 You can now log in using the following credentials:
 
 Email: johndoe@infotools.com
 Password: Johndoe2024
 
-### Explore 🌐
+## Explore 🌐
 Stay tuned for more updates and features as this project grows. Contributions and feedback are always welcome!
