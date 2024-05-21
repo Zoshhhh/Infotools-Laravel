@@ -7,28 +7,34 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    use HasFactory;
+    use HasFactory; // Utilise le trait HasFactory pour intégrer les capacités des usines de modèles
 
-    protected $primaryKey = 'client_id';
+    protected $primaryKey = 'client_id'; // Définit la clé primaire pour le modèle, utilisée dans la base de données
 
     protected $fillable = [
-        'last_name',
-        'first_name',
-        'email',
-        'phone',
-        'address',
-        'type',
+        'last_name',   // Nom de famille du client
+        'first_name',  // Prénom du client
+        'email',       // Adresse email du client
+        'phone',       // Numéro de téléphone du client
+        'address',     // Adresse du client
+        'type',        // Type de client, peut être utilisé pour distinguer différents types de clients
     ];
+
+    /**
+     * Définit la relation avec le modèle Order.
+     * Un client peut avoir plusieurs commandes.
+     */
     public function orders()
     {
         return $this->hasMany(Order::class, 'client_id', 'client_id');
     }
 
-    // Define the appointments relationship
+    /**
+     * Définit la relation avec le modèle Appointment.
+     * Un client peut avoir plusieurs rendez-vous.
+     */
     public function appointments()
     {
         return $this->hasMany(Appointment::class, 'client_id', 'client_id');
     }
-
-
 }

@@ -9,23 +9,25 @@ use App\Models\Appointment;
 class ClientController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Affiche une liste de toutes les ressources (clients).
      */
     public function index()
     {
-        $client = Client::all(); 
-        return view('client.index', compact('client')); 
+        $client = Client::all(); // Récupère tous les clients
+        return view('client.index', compact('client')); // Retourne la vue avec les données des clients
     }
 
-
     /**
-     * Show the form for creating a new resource.
+     * Affiche le formulaire de création d'une nouvelle ressource (client).
      */
     public function create()
     {
-        return view('client.create');
+        return view('client.create'); // Retourne la vue pour créer un nouveau client
     }
 
+    /**
+     * Stocke une nouvelle ressource (client) dans la base de données.
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -48,26 +50,27 @@ class ClientController extends Controller
 
         return redirect()->route('client.index')->with('success', 'Client créé avec succès.');
     }
+
     /**
-     * Display the specified resource.
+     * Affiche une ressource spécifique (client) en utilisant son ID.
      */
     public function show($id)
     {
-        $client = Client::findOrFail($id); // Trouve le client ou renvoie une erreur 404
-        return view('client.show', compact('client')); // Assurez-vous que cette vue existe dans resources/views/clients
+        $client = Client::findOrFail($id); // Trouve le client par ID ou génère une erreur 404
+        return view('client.show', compact('client')); // Retourne la vue pour afficher le client
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Affiche le formulaire pour éditer une ressource existante (client).
      */
     public function edit($id)
     {
         $client = Client::findOrFail($id);
-        return view('client.edit', compact('client')); // Assurez-vous que cette vue existe
+        return view('client.edit', compact('client')); // Retourne la vue pour éditer le client
     }
 
     /**
-     * Update the specified resource in storage.
+     * Met à jour la ressource spécifiée (client) dans la base de données.
      */
     public function update(Request $request, $id)
     {
@@ -95,17 +98,17 @@ class ClientController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprime la ressource spécifiée (client) de la base de données.
      */
     public function destroy($id)
     {
         $client = Client::findOrFail($id);
 
-        // Delete associated appointments first
+        // Supprime d'abord les rendez-vous et commandes associés au client
         $client->appointments()->delete();
         $client->orders()->delete();
 
-        // Now delete the client
+        // Supprime ensuite le client
         $client->delete();
 
         return redirect()->route('client.index')
