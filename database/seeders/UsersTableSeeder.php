@@ -14,10 +14,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Kévin Stacchetti',
-            'email' => 'kevinstacchett@gmail.com',
+            'name' => 'John Doe',
+            'email' => 'johndoe@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('Kevin2004.'),
+            'password' => Hash::make('JohnDoe2000.'),
             'current_team_id' => null,
             'created_at' => now(),
             'updated_at' => now()
